@@ -19,12 +19,15 @@ const data = [
   { 'quoteAuthor': "Lloyd Alexander", 'quoteText': "The only thing a cat worries about is what's happening right now." },
 ]
 
+let n = 0;
 // Get Quote from API
 async function getQuote() {
   // solving CORS ===== NOT WORKING ==============
   // const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
   // const apiURL = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
 
+
+  n = n >= data.length - 1 ? 0 : n + 1;
 
   try {
     // ==== CORS ISSUE =========
@@ -33,8 +36,8 @@ async function getQuote() {
     // console.log('HERE IS DATA:', data)
 
     // ======= USE DUMMY DATA =========
-    authorText.innerText = `-- ${data[0].quoteAuthor}`;
-    quoteText.innerText = data[0].quoteText
+    authorText.innerText = `-- ${data[n].quoteAuthor}`;
+    quoteText.innerText = data[n].quoteText
   } catch (error) {
     console.log('whoops, no quote', error);
   }
