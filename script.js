@@ -1,4 +1,3 @@
-
 const quoteContainer = document.getElementById('quote-container');
 const quoteText = document.getElementById('quote')
 const authorText = document.getElementById('author')
@@ -19,28 +18,31 @@ const data = [
   { 'quoteAuthor': "Lloyd Alexander", 'quoteText': "The only thing a cat worries about is what's happening right now." },
 ]
 
+//  ===== CORS ISSUE-NOT WORKING ==============
+// async function getQuote() {
+//   // solving CORS
+//   const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+//   const apiURL = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
+
+//   try {
+//     // ==== CORS ISSUE =========
+//     const response = await fetch(proxyUrl + apiURL);
+//     const data = await response.json();
+//     // console.log('HERE IS DATA:', data)
+
+//     authorText.innerText = `-- ${data.quoteAuthor}`;
+//     quoteText.innerText = data.quoteText
+//   } catch (error) {
+//     console.log('whoops, no quote', error);
+//   }
+// }
+
+// ======= USE DUMMY DATA =========
 let n = 0;
-// Get Quote from API
-async function getQuote() {
-  // solving CORS ===== NOT WORKING ==============
-  // const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-  // const apiURL = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
-
-
+function getQuote() {
   n = n >= data.length - 1 ? 0 : n + 1;
-
-  try {
-    // ==== CORS ISSUE =========
-    // const response = await fetch(proxyUrl + apiURL);
-    // const data = await response.json();
-    // console.log('HERE IS DATA:', data)
-
-    // ======= USE DUMMY DATA =========
-    authorText.innerText = `-- ${data[n].quoteAuthor}`;
-    quoteText.innerText = data[n].quoteText
-  } catch (error) {
-    console.log('whoops, no quote', error);
-  }
+  authorText.innerText = `-- ${data[n].quoteAuthor}`;
+  quoteText.innerText = data[n].quoteText;
 }
 
 //Tweet Quote
